@@ -1,0 +1,6 @@
+annels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - sra-tools
