@@ -1,11 +1,11 @@
-# Main entrypoint of the workflow. 
-# Please follow the best practices: 
-# https://snakemake.readthedocs.io/en/stable/snakefiles/best_practices.html,
-# in particular regarding the standardized folder structure mentioned there.
+configfile: "config/config.yaml"
 
-#include: "rules/common.smk"
+include: "rules/common.smk"
 include: "rules/sra.smk"
+include: "rules/map.smk"
+include: "rules/signal.smk"
+include: "rules/epest.smk"
 
-#rule all:
-#    input:
-#        get_output
+rule all:
+    input:
+        outputs
