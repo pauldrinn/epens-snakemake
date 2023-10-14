@@ -1,6 +1,6 @@
 rule run_epest:
     input:
-        f="results/filtered/{sample}.bam",
+        b="results/filtered/{sample}.bam",
         i="results/filtered/{sample}.bam.bai",
     output:
         directory("results/epest/{sample}/"),
@@ -11,5 +11,5 @@ rule run_epest:
         "../envs/epest.yaml"
     shell:
         """
-        python workflow/scripts/ePEST/ePEST.py {params.args} -t {threads} -o {output} {input.f}
+        python workflow/scripts/ePEST/ePEST.py {params.args} -t {threads} -o {output} {input.b}
         """

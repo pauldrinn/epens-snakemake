@@ -16,13 +16,13 @@ rule filter:
     input:
         "results/mapped/{sample}.bam",
     output:
-        "results/filtered/{sample}.bam",
-        "results/filtered/{sample}.bam.bai",
+        b="results/filtered/{sample}.bam",
+        i="results/filtered/{sample}.bam.bai",
     threads: 64
     conda:
         "../envs/samtools.yaml"
     shell:
         """
-        samtools view -@4 -b -q30 -f2 -F3852 {input} | samtools collate -Ou -@{threads} - | samtools fixmate -mu - - | samtools view -b -f2 -F3852 | samtools sort -@{threads} > {output} \
-        && samtools index {output}        
+        samtools view -@4 -b -q30 -f2 -F3852 {input} | samtools collate -Ou -@{threads} - | samtools fixmate -mu - - | samtools view -b -f2 -F3852 | samtools sort -@{threads} > {output.b} \
+        && samtools index {output.b}        
         """
