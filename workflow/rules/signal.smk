@@ -2,7 +2,7 @@ rule bamtobed:
     input:
         "results/filtered/{sample}.bam"
     output:
-        "results/fragments/{sample}.bed"
+        temp("results/fragments/{sample}.bed")
     params:
         extra=""
     wrapper:

@@ -1,2 +1,3 @@
+SAMPLES: "config/samples.tsv"
 BWA_INDEX: "/groups/lackgrp/genomeAnnotations/hg19/hg19.bwa.idx"
 CHR_SIZES: "/groups/lackgrp/genomeAnnotations/hg19/hg19.chrom.sizes"

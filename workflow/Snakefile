@@ -6,6 +6,9 @@ include: "rules/map.smk"
 include: "rules/signal.smk"
 include: "rules/epest.smk"
 
+wildcard_constraints:
+    sample="|".join(list(samples["sample"])),
+
 rule all:
     input:
         outputs
