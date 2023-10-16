@@ -27,7 +27,8 @@ rule get_signals:
         cat {input} | awk '$4 ~ /\/1$/ && $6 == "+"' | sort -k 1,1 | bedtools genomecov -5 -bg -g {params.chrsizes} -i - | sort -k1,1 -k2,2n > {output.r1_5p_p} &
         cat {input} | awk '$4 ~ /\/1$/ && $6 == "-"' | sort -k 1,1 | bedtools genomecov -5 -bg -g {params.chrsizes} -i - | sort -k1,1 -k2,2n > {output.r1_5p_m} &
         cat {input} | awk '$4 ~ /\/2$/ && $6 == "-"' | sort -k 1,1 | bedtools genomecov -5 -bg -g {params.chrsizes} -i - | sort -k1,1 -k2,2n > {output.r2_5p_m} &
-        cat {input} | awk '$4 ~ /\/2$/ && $6 == "-"' | sort -k 1,1 | bedtools genomecov -bg -g {params.chrsizes} -i - | sort -k1,1 -k2,2n > {output.r2_rd_m}
+        cat {input} | awk '$4 ~ /\/2$/ && $6 == "-"' | sort -k 1,1 | bedtools genomecov -bg -g {params.chrsizes} -i - | sort -k1,1 -k2,2n > {output.r2_rd_m} &
+        wait
         """
 
 rule convert_to_bw:
